@@ -15,7 +15,6 @@ var mongoose = require('mongoose');
 var routes = require('./routes.js');
 
 var app = express();
-require('dotenv').load();
 require('./config/passport') (passport);
 
 // Connect to mongoDB
