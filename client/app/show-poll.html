@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>Poll</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Create and share straw polls">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/resources/css/common.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/css/app/show-poll.css">
+        <link rel="alternate" media="handheld" href="#">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    </head>
+    
+    <body ng-app="pollApp" ng-controller="pollController">
+        
+        <header>
+            <nav class="navbar navbar-inverse navbar-fixed-top" ng-cloak>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/create" ng-show="isLoggedIn()">Create a Poll</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <div class="login-btn sign-in" ng-hide="isLoggedIn()">
+                            <a href="/auth/github" class="btn btn-default" role="button">Login</a></a>
+                        </div>
+                        <div class="user-info sign-in" ng-show="isLoggedIn()">
+                            <a href="/profile" class="btn btn-link" ng-model="displayName">{{ displayName }}</a>
+                            <a href="/logout" class="btn btn-link">Logout</a>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <div>
+            <div class="container-fluid poll">
+            	<br/><br/>
+            	<div class="col-md-2"></div>
+            	<div class="col-md-3 choices-side">
+            		<h3 class="poll-question" ng-model="question">{{question}}?</h3>
+            		<form novalidate class="vote-form">
+            			<fieldset class="form-group">
+            				<div class="radio" ng-repeat="choice in choices">
+            					<label>
+            						<input type="radio" ng-model="$parent.selectionNumber" name="radioMenu" ng-value="{{choice.number}}">
+            						{{choice.text}}
+            						</input>
+            				  	</label>
+            				</div>
+            			</fieldset>
+            			<br/>
+            			<input type="submit" class="btn btn-primary" value="Vote" ng-click="votePoll(selectionNumber)" />
+            			<button type="button" class="btn btn-info" ng-show="isLoggedIn()" data-toggle="modal" data-target="#myModal">Add an Option</button>
+            			<button type="button" class="btn btn-danger" ng-show="isCreator()" ng-click="deletePoll()">Delete</button>
+            		</form>
+            		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Add a new choice</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <input type="text" name="newChoice" id="newChoice" ng-model="newChoice"></input>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" ng-click="addChoice(newChoice)">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            	</div>
+            	<div class="col-md-6 poll-side">
+            		<canvas id="polar-doughnut" class="chart chart-doughnut" chart-data="voteSet" chart-labels="labelSet">
+                    </canvas>
+            	</div>
+            </div>
+        </div>
+        
+    </body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/1.0.0/angular-chart.min.js"></script>
+    <script src="/resources/controllers/app/pollController.js"></script>
+    
+</html>

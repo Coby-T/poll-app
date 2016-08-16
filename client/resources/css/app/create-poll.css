@@ -1,0 +1,56 @@
+.title-block {
+	width: 80%;
+	margin: 10px 8%;
+}
+
+.title-input {
+    width: 80%;
+}
+
+.choices-block {
+	border: 2px solid #565656;
+	width: 50%;
+	border-radius: 5px;
+	margin: 10px 10%;
+	padding: 10px;
+}
+
+fieldset{
+    background: #FCFCFC;
+    padding: 5px;
+}
+
+.addfields{
+    margin: 10px 0;
+}
+
+.choice-input {
+	display: inline-block;
+	width: 80%;
+}
+
+.remove{
+    background: #C76868;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 21px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    padding: 4px 9px;
+    vertical-align: top;
+    line-height: 100%;   
+}
+
+.addfields {
+	margin: 0 20px;
+}
+
+.final-submit {
+	margin: 20px 10%;
+}
+
+input[type="text"],
+select{
+    padding:5px;
+}

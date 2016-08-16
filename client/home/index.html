@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <Title>Strawman Poll - Quick and Pretty Polls</Title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Create and share straw polls">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/resources/css/common.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/css/home/index.css" type="text/css">
+        <link rel="alternate" media="handheld" href="#">
+    </head>
+    
+    <body ng-app="strawmanPoll">
+        
+        <header>
+            <nav ng-controller="navController" class="navbar navbar-inverse navbar-fixed-top" ng-cloak>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/create" ng-show="isLoggedIn()">Create a Poll</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <div class="login-btn sign-in" ng-hide="isLoggedIn()">
+                            <a href="/auth/github" class="btn btn-default" role="button">Login</a></a>
+                        </div>
+                        <div class="user-info sign-in" ng-show="isLoggedIn()">
+                            <a href="/profile" class="btn btn-link" ng-model="displayName">{{ displayName }}</a>
+                            <a href="/logout" class="btn btn-link">Logout</a>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <div ng-controller="homeController">
+            <div class="banner">
+                <h2>Strawman Polls</h2>
+                <h6>Vote in any poll you see.</h6>
+                <h6>Or sign in to create and edit polls.</h6>
+              </div>
+              <div class="container-fluid well">
+                  <a href="{{ item.link }}" class="btn btn-default wide-btn" ng-repeat="item in polls">{{item.title}}</a>
+              </div>
+        </div>
+
+    </body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="/resources/controllers/home/homeController.js"></script>
+
+</html>

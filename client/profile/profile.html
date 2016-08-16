@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>Profile</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="Create and share straw polls">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/resources/css/common.css" type="text/css" />
+        <link rel="stylesheet" href="/resources/css/profile/profile.css">
+        <link rel="alternate" media="handheld" href="#">
+    </head>
+    
+    <body ng-app="profileApp">
+        
+        <header>
+            <nav ng-controller="navController" class="navbar navbar-inverse navbar-fixed-top" ng-cloak>
+                <div class="collapse navbar-collapse" id="main-navbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/create" ng-show="isLoggedIn()">Create a Poll</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <div class="login-btn sign-in" ng-hide="isLoggedIn()">
+                            <a href="/auth/github" class="btn btn-default" role="button">Login</a></a>
+                        </div>
+                        <div class="user-info sign-in" ng-show="isLoggedIn()">
+                            <a href="/profile" class="btn btn-link" ng-model="displayName">{{ displayName }}</a>
+                            <a href="/logout" class="btn btn-link">Logout</a>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+        <div ng-controller="profileController">
+            <div class="container">
+              <div class="profile-info">
+                <h4 class="name-info" ng-model="name">{{name}}</h4>
+                <div class="container-fluid well poll-info">
+                  <div class="created-polls polls">
+                    <h5 class="created-poll-title poll-title">Created Polls</h5>
+                    <hr/>
+                    <div class="created-poll-list poll-list">
+                        This feature is currently in development
+                      <!--a href="{{createdPolls.id}}" class="btn btn-default poll-list-title" ng-repeat="createdPolls in createdPolls">{{createdPolls.title}}</a-->
+                    </div>
+                  </div>
+                  <!--div class="voted-polls polls">
+                    <h5 class="voted-poll-title poll-title">Voted Polls</h5>
+                    <hr/>
+                    <div class="voted-poll-list poll-list">
+                      <a href="{{votedPolls.id}}" class="btn btn-default poll-list-title" ng-repeat="votePolls in votedPolls">{{votedPolls.title}} - {{votedPolls.choice}}</a>
+                    </div>
+                  </div-->
+                </div>
+              </div>  
+            </div>
+        </div>
+
+    </body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="/resources/controllers/profile/profileController.js"></script>
+    
+</html>

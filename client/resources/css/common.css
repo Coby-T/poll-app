@@ -1,0 +1,18 @@
+nav {
+  padding: 10px;
+}
+
+body {
+	padding: 70px 0;
+}
+
+.sign-in {
+  margin: 5px 30px 5px 5px;
+}
+
+.banner {
+  text-align: center;
+  margin: -20px 0 20px 0;
+  background-color: #283470;
+  padding: 20px;
+}

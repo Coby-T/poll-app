@@ -1,0 +1,25 @@
+.banner {
+	text-align: center;
+	margin: -20px 0 20px 0;
+	background-color: #283470;
+	padding: 20px;
+	color: white;
+}
+
+h2 {
+	font-size: 6em;
+	font-weight: bold;
+}
+
+.container-fluid {
+	width: 80%;
+	padding: 10px auto;
+}
+
+.wide-btn {
+	width: 90%;
+	height: 40px;
+	margin: 10px 5%;
+	text-align: center;
+	padding: 10px 0;
+}

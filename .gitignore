@@ -1,3 +1,5 @@
 node_modules
 data
-server/env
+mongod
+npm-debug.log
+.env
