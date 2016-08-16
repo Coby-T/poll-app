@@ -1,1 +1,1 @@
-Voting app
+Voting app by Coby Tao for FreeCodeCamp
